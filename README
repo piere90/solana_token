@@ -1,0 +1,65 @@
+# Solana Token Project
+
+This project demonstrates how to create, mint, and transfer a native token on Solana using TypeScript and Docker.
+
+## Prerequisites
+
+- Docker and Docker Compose installed
+- Node.js (to run `ts-node` locally, if necessary)
+
+## Project Setup
+
+1. Clone the repository or download the project files.
+2. Ensure you have Docker and Docker Compose installed.
+
+## Docker Image Build
+
+Run the following commands to build the Docker image and start the containers:
+
+```bash
+# Build the Docker image
+docker-compose build
+
+# Start the Docker containers
+docker-compose up -d
+
+# Access the Docker container
+docker-compose exec solana-token sh
+
+# Execute the scripts in the container
+ts-node keygen.ts
+
+# Note the public key printed by the previous command
+# This will be used as RECIPIENT_PUBLIC_KEY_HERE in subsequent steps
+
+ts-node airdrop.ts
+ts-node spl_init.ts
+
+# Note the mint public key printed by the previous command
+# This will be used as YOUR_MINT_PUBLIC_KEY_HERE in subsequent steps
+
+# Edit spl_mint.ts by replacing YOUR_MINT_PUBLIC_KEY_HERE with the mint public key
+nano spl_mint.ts
+
+# Execute the spl_mint.ts script
+ts-node spl_mint.ts
+
+# Edit spl_transfer.ts by replacing YOUR_MINT_PUBLIC_KEY_HERE with the mint public key
+# and RECIPIENT_PUBLIC_KEY_HERE with the recipient's public key
+nano spl_transfer.ts
+
+# Execute the spl_transfer.ts script
+ts-node spl_transfer.ts
+
+Generated Wallet Information
+Public Key: 2B3L5BZ7cvSamrHmgSQHPR5Z4zZr4Ret3Jnz2QkrhaLg
+
+Mint created: BtJXE5M7eaRjiRnm8AkRDY9c7CrAp9Bjhhp6PyVHwX9V
+
+Tokens minted to: 7qTdsdJkRCYVdL2GDjXNE71vfsQnzGdc9eF8Jtz7uYp1
+
+Tokens transferred to: 7qTdsdJkRCYVdL2GDjXNE71vfsQnzGdc9eF8Jtz7uYp1
+
+Verify on Solana Explorer
+
+https://explorer.solana.com/address/2B3L5BZ7cvSamrHmgSQHPR5Z4zZr4Ret3Jnz2QkrhaLg?cluster=devnet
