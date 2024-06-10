@@ -1,60 +1,57 @@
 # Solana Token Project
 
-Questo progetto dimostra come creare, mintare e trasferire un token nativo su Solana utilizzando TypeScript e Docker.
+This project demonstrates how to create, mint, and transfer a native token on Solana using TypeScript and Docker.
 
-## Prerequisiti
+## Prerequisites
 
-- Docker e Docker Compose installati
-- Node.js (per eseguire `ts-node` localmente, se necessario)
+- Docker and Docker Compose installed
+- Node.js (to run `ts-node` locally, if necessary)
 
-## Configurazione del Progetto
+## Project Setup
 
-1. Clona il repository o scarica i file del progetto.
-2. Assicurati di avere Docker e Docker Compose installati.
+1. Clone the repository or download the project files.
+2. Ensure you have Docker and Docker Compose installed.
 
-## Costruzione dell'Immagine Docker
+## Docker Image Build
 
-Esegui i seguenti comandi per costruire l'immagine Docker e avviare i container:
+Run the following commands to build the Docker image and start the containers:
 
 ```bash
-
-# Build dell'immagine Docker
+# Build the Docker image
 docker-compose build
 
-# Avvio dei container Docker
+# Start the Docker containers
 docker-compose up -d
 
-# Accesso al container Docker
+# Access the Docker container
 docker-compose exec solana-token sh
 
-# Esecuzione degli script nel container
+# Execute the scripts in the container
 ts-node keygen.ts
 
-# Annotare la chiave pubblica stampata dal comando precedente
-# Questa sarà usata come RECIPIENT_PUBLIC_KEY_HERE nei passaggi successivi
+# Note the public key printed by the previous command
+# This will be used as RECIPIENT_PUBLIC_KEY_HERE in subsequent steps
 
 ts-node airdrop.ts
 ts-node spl_init.ts
 
-# Annotare la chiave pubblica del mint stampata dal comando precedente
-# Questa sarà usata come YOUR_MINT_PUBLIC_KEY_HERE nei passaggi successivi
+# Note the mint public key printed by the previous command
+# This will be used as YOUR_MINT_PUBLIC_KEY_HERE in subsequent steps
 
-# Modifica spl_mint.ts sostituendo YOUR_MINT_PUBLIC_KEY_HERE con la chiave pubblica del mint
+# Edit spl_mint.ts by replacing YOUR_MINT_PUBLIC_KEY_HERE with the mint public key
 nano spl_mint.ts
 
-# Esegui lo script spl_mint.ts
+# Execute the spl_mint.ts script
 ts-node spl_mint.ts
 
-# Modifica spl_transfer.ts sostituendo YOUR_MINT_PUBLIC_KEY_HERE con la chiave pubblica del mint
-# e RECIPIENT_PUBLIC_KEY_HERE con la chiave pubblica del destinatario
+# Edit spl_transfer.ts by replacing YOUR_MINT_PUBLIC_KEY_HERE with the mint public key
+# and RECIPIENT_PUBLIC_KEY_HERE with the recipient's public key
 nano spl_transfer.ts
 
-# Esegui lo script spl_transfer.ts
+# Execute the spl_transfer.ts script
 ts-node spl_transfer.ts
 
-
-#LASCIO QUI IL MIO WALLET GENERATO
-
+Generated Wallet Information
 Public Key: 2B3L5BZ7cvSamrHmgSQHPR5Z4zZr4Ret3Jnz2QkrhaLg
 
 Mint created: BtJXE5M7eaRjiRnm8AkRDY9c7CrAp9Bjhhp6PyVHwX9V
@@ -63,6 +60,6 @@ Tokens minted to: 7qTdsdJkRCYVdL2GDjXNE71vfsQnzGdc9eF8Jtz7uYp1
 
 Tokens transferred to: 7qTdsdJkRCYVdL2GDjXNE71vfsQnzGdc9eF8Jtz7uYp1
 
-#SOLANA SCAN
-https://explorer.solana.com/address/2B3L5BZ7cvSamrHmgSQHPR5Z4zZr4Ret3Jnz2QkrhaLg?cluster=devnet
+Verify on Solana Explorer
 
+https://explorer.solana.com/address/2B3L5BZ7cvSamrHmgSQHPR5Z4zZr4Ret3Jnz2QkrhaLg?cluster=devnet
